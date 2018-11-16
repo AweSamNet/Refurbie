@@ -13,7 +13,7 @@ export class DeviceListComponent implements OnInit {
   dataSource: DeviceListDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['receivedOn', 'manufacturer', 'model', 'status'];
 
   ngOnInit() {
     this.dataSource = new DeviceListDataSource(this.paginator, this.sort);

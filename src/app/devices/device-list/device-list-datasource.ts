@@ -2,35 +2,85 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-
-// TODO: Replace this with your own data model type
-export interface DeviceListItem {
-  name: string;
-  id: number;
-}
+import {Manufacturer} from "../../device-models/Manufacturer";
+import {DeviceModel} from "../../device-models/DeviceModel";
+import {Device} from "../Device";
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: DeviceListItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
+const manufacturers: Manufacturer[] =[
+
+];
+const deviceModels: DeviceModel[] =[
+
+];
+const device1: Device = new Device();
+Object.assign(device1,
+{
+  receivedOn: new Date(2018, 1, 1),
+  deviceModel: {
+    deviceType: {id: 1, name: "laptop"},
+    imageUrls: [],
+    manufacturer: {id: 1, name: "Samsung"},
+    modelNumber: "1234",
+    notes: "",
+  },
+  notes: "First Device",
+  receivedFrom: {
+    firstName: "Sam",
+    lastName: "Lombardo",
+
+  },
+  serialNumber: "SM-1234",
+  status: "Needs Format, Needs ChromeOS, Needs Hard Drive",
+});
+const device2: Device = new Device();
+Object.assign(device2,
+  {
+    receivedOn: new Date(2017, 1, 1),
+    deviceModel: {
+      deviceType: {id: 2, name: "tablet"},
+      imageUrls: [],
+      manufacturer: {id: 2, name: "Dell"},
+      modelNumber: "t-1",
+      notes: "",
+    },
+    notes: "My Tablet",
+    receivedFrom: {
+      firstName: "Sammy",
+      lastName: "Lombardo",
+
+    },
+    serialNumber: "TB-1234",
+    status: "Needs Mint OS, Needs RAM",
+  });
+
+const device3: Device = new Device();
+Object.assign(device3,
+  {
+    receivedOn: new Date(2018, 11, 12),
+    deviceModel: {
+      deviceType: {id: 1, name: "laptop"},
+      imageUrls: [],
+      manufacturer: {id: 3, name: "HP"},
+      modelNumber: "l-2",
+      notes: "",
+    },
+    notes: "work laptop",
+    receivedFrom: {
+      firstName: "Mas",
+      lastName: "Lombardo",
+      phoneNumbers: [
+        { type: "Home", number: "555-555-5555"}
+      ],
+    },
+    serialNumber: "LM-BO",
+    status: "Ready",
+  })
+
+const devices: Device[] = [
+  device1,
+  device2,
+  device3,
 ];
 
 /**
@@ -38,8 +88,8 @@ const EXAMPLE_DATA: DeviceListItem[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class DeviceListDataSource extends DataSource<DeviceListItem> {
-  data: DeviceListItem[] = EXAMPLE_DATA;
+export class DeviceListDataSource extends DataSource<Device> {
+  data: Device[] = devices;
 
   constructor(private paginator: MatPaginator, private sort: MatSort) {
     super();
@@ -50,7 +100,7 @@ export class DeviceListDataSource extends DataSource<DeviceListItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<DeviceListItem[]> {
+  connect(): Observable<Device[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -77,7 +127,7 @@ export class DeviceListDataSource extends DataSource<DeviceListItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: DeviceListItem[]) {
+  private getPagedData(data: Device[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -86,7 +136,7 @@ export class DeviceListDataSource extends DataSource<DeviceListItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: DeviceListItem[]) {
+  private getSortedData(data: Device[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -94,8 +144,9 @@ export class DeviceListDataSource extends DataSource<DeviceListItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'receivedOn': return compare(a.receivedOn, b.receivedOn, isAsc);
+        case 'manufacturer': return compare(+a.deviceModel.manufacturer, +b.deviceModel.manufacturer, isAsc);
+        case 'model': return compare(+a.deviceModel.modelNumber, +b.deviceModel.modelNumber, isAsc);
         default: return 0;
       }
     });

@@ -1,15 +1,27 @@
 <div class="mat-elevation-z8">
   <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    <!-- Date Received Column -->
+    <ng-container matColumnDef="receivedOn">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Received On</th>
+      <td mat-cell *matCellDef="let row">{{row.receivedOn}}</td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    <!-- Manufacturer Column -->
+    <ng-container matColumnDef="manufacturer">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Manufacturer</th>
+      <td mat-cell *matCellDef="let row">{{row.deviceModel.manufacturer.name}}</td>
+    </ng-container>
+
+    <!-- Model Column -->
+    <ng-container matColumnDef="model">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Model</th>
+      <td mat-cell *matCellDef="let row">{{row.deviceModel.modelNumber}}</td>
+    </ng-container>
+
+    <!-- Model Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let row">{{row.status}}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
