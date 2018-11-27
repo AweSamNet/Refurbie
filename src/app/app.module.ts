@@ -6,32 +6,53 @@ import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import {
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatCardModule, MatDialogModule
+} from '@angular/material';
 import { DevicesComponent } from './devices/devices.component';
 import { DeviceListComponent } from './devices/device-list/device-list.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {OverlayModule} from "@angular/cdk/overlay";
+import { DeleteDeviceDialogComponent } from './devices/delete-device-dialog/delete-device-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
     DevicesComponent,
-    DeviceListComponent
+    DeviceListComponent,
+    DeleteDeviceDialogComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
+    FlexLayoutModule,
     LayoutModule,
-    MatToolbarModule,
     MatButtonModule,
-    MatSidenavModule,
+    MatCardModule,
+    MatDialogModule,
     MatIconModule,
     MatListModule,
-    MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSidenavModule,
+    MatSortModule,
+    MatTableModule,
+    MatToolbarModule,
+    OverlayModule,
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DeleteDeviceDialogComponent
+  ]
 })
 export class AppModule { }

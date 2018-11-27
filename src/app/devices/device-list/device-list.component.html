@@ -1,9 +1,9 @@
-<div class="mat-elevation-z8">
+<div >
   <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
     <!-- Date Received Column -->
     <ng-container matColumnDef="receivedOn">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Received On</th>
-      <td mat-cell *matCellDef="let row">{{row.receivedOn}}</td>
+      <td mat-cell *matCellDef="let row">{{row.receivedOn | date:'medium'}}</td>
     </ng-container>
 
     <!-- Manufacturer Column -->
@@ -24,6 +24,21 @@
       <td mat-cell *matCellDef="let row">{{row.status}}</td>
     </ng-container>
 
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let row">
+        <button
+          type="button"
+          mat-icon-button
+          (click)="actionsClick(row.id, actionsTrigger)"
+          cdkOverlayOrigin
+          #actionsTrigger="cdkOverlayOrigin"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </td>
+    </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
@@ -35,3 +50,16 @@
       [pageSizeOptions]="[25, 50, 100, 250]">
   </mat-paginator>
 </div>
+<ng-template cdkConnectedOverlay
+             [cdkConnectedOverlayOrigin]="actionsOrigin"
+             [cdkConnectedOverlayOpen]="showActions"
+>
+  <mat-card>
+    <mat-nav-list>
+      <a mat-list-item href="#">Edit</a>
+      <mat-list-item
+        (click)="openDeleteDialog()"
+      >Delete</mat-list-item>
+    </mat-nav-list>
+  </mat-card>
+</ng-template>

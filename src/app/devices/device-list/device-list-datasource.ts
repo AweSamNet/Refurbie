@@ -16,6 +16,7 @@ const deviceModels: DeviceModel[] =[
 const device1: Device = new Device();
 Object.assign(device1,
 {
+  id: 1,
   receivedOn: new Date(2018, 1, 1),
   deviceModel: {
     deviceType: {id: 1, name: "laptop"},
@@ -36,6 +37,7 @@ Object.assign(device1,
 const device2: Device = new Device();
 Object.assign(device2,
   {
+    id: 2,
     receivedOn: new Date(2017, 1, 1),
     deviceModel: {
       deviceType: {id: 2, name: "tablet"},
@@ -57,6 +59,7 @@ Object.assign(device2,
 const device3: Device = new Device();
 Object.assign(device3,
   {
+    id: 3,
     receivedOn: new Date(2018, 11, 12),
     deviceModel: {
       deviceType: {id: 1, name: "laptop"},
@@ -75,7 +78,7 @@ Object.assign(device3,
     },
     serialNumber: "LM-BO",
     status: "Ready",
-  })
+  });
 
 const devices: Device[] = [
   device1,

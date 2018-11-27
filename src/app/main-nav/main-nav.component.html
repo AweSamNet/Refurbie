@@ -1,8 +1,8 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'push'"
-      [opened]="!(isHandset$ | async)">
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/devices">Devices</a>
@@ -22,6 +22,8 @@
       </button>
       <span>Refurbie</span>
     </mat-toolbar>
-    <router-outlet></router-outlet>
+    <div class="mainContent">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

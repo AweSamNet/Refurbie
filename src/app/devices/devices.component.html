@@ -1,1 +1,23 @@
-<app-device-list></app-device-list>
+
+<mat-card>
+  <mat-card-header >
+    <div fxLayout="row" fxFlex="">
+      <mat-card-title>
+        <div>Devices</div>
+      </mat-card-title>
+
+      <div fxFlex="" fxLayout="row" fxLayoutAlign="end">
+        <div fxFlex=""></div>
+        <div fxFlex="nogrow" fxFlexAlign="center">
+          <button mat-flat-button color="primary">Add New</button>
+        </div>
+      </div>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="deviceList">
+      <app-device-list></app-device-list>
+    </div>
+  </mat-card-content>
+</mat-card>
