@@ -5,26 +5,49 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 import {Manufacturer} from "../../device-models/Manufacturer";
 import {DeviceModel} from "../../device-models/DeviceModel";
 import {Device} from "../Device";
+import {DeviceType} from "../../device-models/DeviceType";
 
 // TODO: replace this with real data from your application
 const manufacturers: Manufacturer[] =[
-
+  {id: 1, name: "Samsung"},
+  {id: 2, name: "Dell"},
+  {id: 3, name: "HP"},
 ];
-const deviceModels: DeviceModel[] =[
 
+const deviceTypes: DeviceType[] =[
+  {id: 1, name: "laptop"},
+  {id: 2, name: "tablet"},
+];
+
+const deviceModels: DeviceModel[] =[
+  {
+    deviceType: deviceTypes[0],
+    imageUrls: [],
+    manufacturer: manufacturers[0],
+    modelNumber: "1234",
+    notes: "",
+  },
+  {
+    deviceType: deviceTypes[1],
+    imageUrls: [],
+    manufacturer: manufacturers[1],
+    modelNumber: "t-1",
+    notes: "",
+  },
+  {
+    deviceType: deviceTypes[0],
+    imageUrls: [],
+    manufacturer: manufacturers[2],
+    modelNumber: "l-2",
+    notes: "",
+  }
 ];
 const device1: Device = new Device();
 Object.assign(device1,
 {
   id: 1,
   receivedOn: new Date(2018, 1, 1),
-  deviceModel: {
-    deviceType: {id: 1, name: "laptop"},
-    imageUrls: [],
-    manufacturer: {id: 1, name: "Samsung"},
-    modelNumber: "1234",
-    notes: "",
-  },
+  deviceModel: deviceModels[0],
   notes: "First Device",
   receivedFrom: {
     firstName: "Sam",
@@ -39,13 +62,7 @@ Object.assign(device2,
   {
     id: 2,
     receivedOn: new Date(2017, 1, 1),
-    deviceModel: {
-      deviceType: {id: 2, name: "tablet"},
-      imageUrls: [],
-      manufacturer: {id: 2, name: "Dell"},
-      modelNumber: "t-1",
-      notes: "",
-    },
+    deviceModel: deviceModels[1],
     notes: "My Tablet",
     receivedFrom: {
       firstName: "Sammy",
@@ -61,13 +78,7 @@ Object.assign(device3,
   {
     id: 3,
     receivedOn: new Date(2018, 11, 12),
-    deviceModel: {
-      deviceType: {id: 1, name: "laptop"},
-      imageUrls: [],
-      manufacturer: {id: 3, name: "HP"},
-      modelNumber: "l-2",
-      notes: "",
-    },
+    deviceModel: deviceModels[2],
     notes: "work laptop",
     receivedFrom: {
       firstName: "Mas",

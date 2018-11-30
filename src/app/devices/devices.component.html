@@ -9,7 +9,10 @@
       <div fxFlex="" fxLayout="row" fxLayoutAlign="end">
         <div fxFlex=""></div>
         <div fxFlex="nogrow" fxFlexAlign="center">
-          <button mat-flat-button color="primary">Add New</button>
+          <button mat-flat-button
+                  color="primary"
+                  (click)="openDeviceForm()"
+          >Add New</button>
         </div>
       </div>
     </div>

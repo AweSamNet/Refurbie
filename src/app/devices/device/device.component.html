@@ -1,0 +1,10 @@
+<div class="mat-body">
+
+  <mat-form-field>
+    <mat-select placeholder="Manufacturer">
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

@@ -9,7 +9,6 @@ import {Device} from "../Device";
 })
 export class DeleteDeviceDialogComponent {
 
-
   constructor(
     public dialogRef: MatDialogRef<DeleteDeviceDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Device) {}

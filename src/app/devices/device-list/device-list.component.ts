@@ -18,7 +18,6 @@ export class DeviceListComponent implements OnInit {
   dataSource: DeviceListDataSource;
   public showActions:boolean;
 
-
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['receivedOn', 'manufacturer', 'model', 'status', 'actions'];
   public selectedId: number;
@@ -34,7 +33,7 @@ export class DeviceListComponent implements OnInit {
 
   actionsClick(id: number, control){
     this.selectedId = id;
-    this.showActions = this.actionsOrigin != control || !this.showActions
+    this.showActions = this.actionsOrigin != control || !this.showActions;
     this.actionsOrigin = control;
   }
 
@@ -46,7 +45,7 @@ export class DeviceListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      //this.animal = result;
+      console.log(`Delete dialog result: ${result}`);
     });
   }
 }

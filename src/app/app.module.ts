@@ -15,13 +15,14 @@ import {
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
-  MatCardModule, MatDialogModule
+  MatCardModule, MatDialogModule, MatFormFieldModule, MatSelectModule
 } from '@angular/material';
 import { DevicesComponent } from './devices/devices.component';
 import { DeviceListComponent } from './devices/device-list/device-list.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {OverlayModule} from "@angular/cdk/overlay";
 import { DeleteDeviceDialogComponent } from './devices/delete-device-dialog/delete-device-dialog.component';
+import { DeviceComponent } from './devices/device/device.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DeleteDeviceDialogComponent } from './devices/delete-device-dialog/dele
     MainNavComponent,
     DevicesComponent,
     DeviceListComponent,
-    DeleteDeviceDialogComponent
+    DeleteDeviceDialogComponent,
+    DeviceComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +41,11 @@ import { DeleteDeviceDialogComponent } from './devices/delete-device-dialog/dele
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
+    MatFormFieldModule,
     MatIconModule,
     MatListModule,
     MatPaginatorModule,
+    MatSelectModule,
     MatSidenavModule,
     MatSortModule,
     MatTableModule,
@@ -52,7 +56,8 @@ import { DeleteDeviceDialogComponent } from './devices/delete-device-dialog/dele
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
-    DeleteDeviceDialogComponent
+    DeleteDeviceDialogComponent,
+    DeviceComponent,
   ]
 })
 export class AppModule { }
