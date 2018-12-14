@@ -1,10 +1,33 @@
-<div class="mat-body">
 
-  <mat-form-field>
-    <mat-select placeholder="Manufacturer">
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{food.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
+  <h2 mat-dialog-title>{{ editMode ? "Edit" : "Add New"}} Device</h2>
+  <mat-dialog-content>
+    <mat-form-field fxLayout="row">
+      <mat-select placeholder="Manufacturer"
+                  [(ngModel)]="selectedManufacturerId"
+                  [formControl]="manufacturerControl"
+                  (selectionChange)="loadDeviceModels(selectedManufacturerId)"
+                  required
+      >
+        <mat-option *ngFor="let manufacturer of manufacturers"
+                    [value]="manufacturer.id"
+        >
+          {{manufacturer.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="manufacturerControl?.hasError('required')">Please choose a manufacturer</mat-error>
+
+    </mat-form-field>
+    <mat-form-field fxLayout="row">
+      <mat-select placeholder="Model"
+                  [formControl]="modelControl"
+                  required
+      >
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let model of deviceModels"
+                    [value]="model.id">
+          {{model.modelNumber}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="modelControl?.hasError('required')">Please choose a model</mat-error>
+    </mat-form-field>
+  </mat-dialog-content>

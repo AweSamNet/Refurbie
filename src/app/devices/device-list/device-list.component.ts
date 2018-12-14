@@ -3,6 +3,7 @@ import {MatDialog, MatPaginator, MatSort} from '@angular/material';
 import { DeviceListDataSource } from './device-list-datasource';
 import {CdkOverlayOrigin} from "@angular/cdk/overlay";
 import {DeleteDeviceDialogComponent} from "../delete-device-dialog/delete-device-dialog.component";
+import {DataService} from "../../data/data.service";
 
 @Component({
   selector: 'app-device-list',
@@ -22,13 +23,15 @@ export class DeviceListComponent implements OnInit {
   displayedColumns = ['receivedOn', 'manufacturer', 'model', 'status', 'actions'];
   public selectedId: number;
 
-  constructor(public dialog: MatDialog) {
+  constructor(
+    public dialog: MatDialog,
+    public dataService: DataService) {
     this.showActions = false;
   }
 
 
   ngOnInit() {
-    this.dataSource = new DeviceListDataSource(this.paginator, this.sort);
+    this.dataSource = new DeviceListDataSource(this.paginator, this.sort, this.dataService);
   }
 
   actionsClick(id: number, control){

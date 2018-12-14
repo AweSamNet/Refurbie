@@ -23,6 +23,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {OverlayModule} from "@angular/cdk/overlay";
 import { DeleteDeviceDialogComponent } from './devices/delete-device-dialog/delete-device-dialog.component';
 import { DeviceComponent } from './devices/device/device.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DeviceComponent } from './devices/device/device.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     FlexLayoutModule,
     LayoutModule,
     MatButtonModule,
@@ -51,6 +53,7 @@ import { DeviceComponent } from './devices/device/device.component';
     MatTableModule,
     MatToolbarModule,
     OverlayModule,
+    ReactiveFormsModule,
     AppRoutingModule,
   ],
   providers: [],
