@@ -24,6 +24,9 @@ import {OverlayModule} from "@angular/cdk/overlay";
 import { DeleteDeviceDialogComponent } from './devices/delete-device-dialog/delete-device-dialog.component';
 import { DeviceComponent } from './devices/device/device.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ContactsComponent } from './contacts/contacts.component';
+import { ListPageComponent } from './layout/list-page/list-page.component';
+import { ContactComponent } from './contacts/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     DevicesComponent,
     DeviceListComponent,
     DeleteDeviceDialogComponent,
-    DeviceComponent
+    DeviceComponent,
+    ContactsComponent,
+    ListPageComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +66,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
+    ContactComponent,
     DeleteDeviceDialogComponent,
     DeviceComponent,
   ]

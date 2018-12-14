@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {DeleteDeviceDialogComponent} from "./delete-device-dialog/delete-device-dialog.component";
 import {MatDialog} from "@angular/material";
 import {DeviceComponent} from "./device/device.component";
 
