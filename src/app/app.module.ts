@@ -15,7 +15,7 @@ import {
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
-  MatCardModule, MatDialogModule, MatFormFieldModule, MatSelectModule
+  MatCardModule, MatDialogModule, MatFormFieldModule, MatSelectModule, MatInputModule
 } from '@angular/material';
 import { DevicesComponent } from './devices/devices.component';
 import { DeviceListComponent } from './devices/device-list/device-list.component';
@@ -45,6 +45,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     MatDialogModule,
     MatFormFieldModule,
     MatIconModule,
+    MatInputModule,
     MatListModule,
     MatPaginatorModule,
     MatSelectModule,

@@ -1,7 +1,7 @@
-
+<form class="example-form">
   <h2 mat-dialog-title>{{ editMode ? "Edit" : "Add New"}} Device</h2>
-  <mat-dialog-content>
-    <mat-form-field fxLayout="row">
+  <mat-dialog-content fxLayout="column">
+    <mat-form-field fxFlex="">
       <mat-select placeholder="Manufacturer"
                   [(ngModel)]="selectedManufacturerId"
                   [formControl]="manufacturerControl"
@@ -17,7 +17,7 @@
       <mat-error *ngIf="manufacturerControl?.hasError('required')">Please choose a manufacturer</mat-error>
 
     </mat-form-field>
-    <mat-form-field fxLayout="row">
+    <mat-form-field fxFlex="">
       <mat-select placeholder="Model"
                   [formControl]="modelControl"
                   required
@@ -30,4 +30,11 @@
       </mat-select>
       <mat-error *ngIf="modelControl?.hasError('required')">Please choose a model</mat-error>
     </mat-form-field>
+    <mat-form-field fxFlex="">
+      <input matInput placeholder="Serial Number" value="">
+    </mat-form-field>
+    <mat-form-field fxFlex="">
+      <textarea matInput placeholder="Notes"></textarea>
+    </mat-form-field>
   </mat-dialog-content>
+</form>
