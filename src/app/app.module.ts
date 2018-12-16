@@ -15,7 +15,13 @@ import {
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
-  MatCardModule, MatDialogModule, MatFormFieldModule, MatSelectModule, MatInputModule
+  MatCardModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatSelectModule,
+  MatInputModule,
+  MatRadioModule,
+  MatCheckboxModule
 } from '@angular/material';
 import { DevicesComponent } from './devices/devices.component';
 import { DeviceListComponent } from './devices/device-list/device-list.component';
@@ -27,6 +33,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ContactsComponent } from './contacts/contacts.component';
 import { ListPageComponent } from './layout/list-page/list-page.component';
 import { ContactComponent } from './contacts/contact/contact.component';
+import { AddressFormComponent } from './contacts/contact/address-form/address-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +45,8 @@ import { ContactComponent } from './contacts/contact/contact.component';
     DeviceComponent,
     ContactsComponent,
     ListPageComponent,
-    ContactComponent
+    ContactComponent,
+    AddressFormComponent
   ],
   imports: [
     BrowserModule,
@@ -48,12 +56,14 @@ import { ContactComponent } from './contacts/contact/contact.component';
     LayoutModule,
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
     MatDialogModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
     MatListModule,
     MatPaginatorModule,
+    MatRadioModule,
     MatSelectModule,
     MatSidenavModule,
     MatSortModule,
