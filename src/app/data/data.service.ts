@@ -3,6 +3,7 @@ import {DeviceType} from "../device-models/DeviceType";
 import {DeviceModel} from "../device-models/DeviceModel";
 import {Device} from "../devices/Device";
 import {Injectable} from "@angular/core";
+import {Contact} from "../contacts/Contact";
 
 const manufacturers: Manufacturer[] =[
   {id: 1, name: "Samsung"},
@@ -100,6 +101,76 @@ const devices: Device[] = [
   device3,
 ];
 
+const contacts: Contact[] = [
+  new Contact(<Contact>{
+    firstName: "Sam",
+    lastName: "Lombardo",
+    addressLine1: "123 Abcde st.",
+    addressLine2: "",
+    city: "Montreal",
+    state: "QC",
+    postalCode: "J1J1J1",
+    country: "CA",
+    phoneNumbers: [
+      {type: "Home", number: "123-444-4321", isPrimary: true},
+      {type: "Mobile", number: "555-555-5555"},
+      {type: "Work", number: "222.222.2222"},
+    ],
+    emailAddresses: ["test@test.com",],
+    verified: true,
+    notes: "this is my very first contact!",
+  }),
+  new Contact(<Contact>{
+    firstName: "Joe",
+    lastName: "Joesome",
+    addressLine1: "544 Test st.",
+    addressLine2: "",
+    city: "Abbotsford",
+    state: "BC",
+    postalCode: "J1J1J1",
+    country: "CA",
+    phoneNumbers: [
+    ],
+    emailAddresses: ["test2@test.com",],
+    verified: true,
+    notes: "this is my very second contact!",
+  }),
+  new Contact(<Contact>{
+    firstName: "Marge",
+    lastName: "Margesome",
+    addressLine1: "1 Idunno dr.",
+    addressLine2: "This is second line",
+    city: "Salt Lake City",
+    state: "UT",
+    postalCode: "99999",
+    country: "US",
+    phoneNumbers: [
+      {type: "Home", number: "123-444-4321"},
+      {type: "Mobile", number: "555-555-5555"},
+      {type: "Work", number: "435.678.3456", isPrimary: true},
+    ],
+    emailAddresses: ["testus@test.us",],
+    verified: false,
+    notes: "this is my very first US contact!",
+  }),
+  new Contact(<Contact>{
+    firstName: "Mas",
+    lastName: "Odrabmol",
+    addressLine1: "321 Abcde st.",
+    addressLine2: "",
+    city: "laertnom",
+    state: "QC",
+    postalCode: "J1J1J1",
+    country: "CA",
+    phoneNumbers: [
+      {type: "Mobile", number: "111-111-1111"},
+    ],
+    emailAddresses: ["test2@test2.com",],
+    verified: true,
+    notes: "this is my very first reverse contact!",
+  }),
+];
+
 @Injectable({
   providedIn: 'root'
 })
@@ -125,5 +196,9 @@ export class DataService {
 
   public GetDevices(): Device[]{
     return devices;
+  }
+
+  public GetContacts(): Contact[]{
+    return contacts;
   }
 }

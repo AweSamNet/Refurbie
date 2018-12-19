@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+  import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { ContactListDataSource } from './contact-list-datasource';
+  import {DataService} from "../../data/data.service";
 
 @Component({
   selector: 'app-contact-list',
@@ -13,9 +14,26 @@ export class ContactListComponent implements OnInit {
   dataSource: ContactListDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = [
+    'lastName',
+    'firstName',
+    'phone',
+    'phoneType',
+    'address',
+    'city',
+    'state',
+    'postalCode',
+    'country',
+    'email',
+    'verified',
+  ];
+
+  constructor(public dataService:DataService) {
+
+  }
+
 
   ngOnInit() {
-    this.dataSource = new ContactListDataSource(this.paginator, this.sort);
+    this.dataSource = new ContactListDataSource(this.paginator, this.sort, this.dataService);
   }
 }
