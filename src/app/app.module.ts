@@ -35,6 +35,7 @@ import { ListPageComponent } from './layout/list-page/list-page.component';
 import { ContactComponent } from './contacts/contact/contact.component';
 import { AddressFormComponent } from './contacts/contact/address-form/address-form.component';
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
+import { ContactSelectorComponent } from './contacts/contact-selector/contact-selector.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ContactListComponent } from './contacts/contact-list/contact-list.compo
     ContactComponent,
     AddressFormComponent,
     ContactListComponent,
+    ContactSelectorComponent,
   ],
   imports: [
     BrowserModule,
